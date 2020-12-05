@@ -21,6 +21,10 @@ create table contact_details (
 P_id int references personal_details(P_id) on delete cascade,
 Phone varchar(15));
 
+create table Quarantine (
+P-id int foreign key, 
+Hostel No int foreign key);
+
 create table hostel_details (
 P_id int references personal_details(P_id) on delete cascade,
 Hostel_no int,
