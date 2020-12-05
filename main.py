@@ -190,7 +190,7 @@ class InsertWindow:
 		self.cur.execute(cmd, ins)
 
 		cmd = "SELECT p_id FROM personal_details WHERE aadhar_no = %s"
-		self.cur.execute(cmd, (self.aadhar_no.get(), ))
+		self.cur.execute(cmd, (self.aadhar_noEntry.get(), ))
 		data = self.cur.fetchall()
 		print(data)
 		p_id = data[0][0]
@@ -490,16 +490,16 @@ class HomePage:
 		self.homePageWindow.mainloop()
 
 	def Insert(self):
-		InsertWindow()
+		insert = InsertWindow()
 
 	def Update(self):
-		UpdateWindow()
+		update = UpdateWindow()
 
 	def Search(self):
-		SearchWindow()
+		search = SearchWindow()
 
 	def Delete(self):
-		DeleteWindow()
+		delete = DeleteWindow()
 
 	def Display(self):
 		mydb = mysql.connector.connect(host='localhost', user='root', passwd='root', database='dbms_project')
@@ -509,10 +509,10 @@ class HomePage:
 			  "WHERE a.p_id = p.p_id AND p.p_id = h.p_id AND p.p_id = c.p_id"
 		cur.execute(cmd)
 		data = cur.fetchall()
-		for x in data:
-			print(x)
+		# for x in data:
+		# 	print(x)
 		DatabaseView(data)
 		cur.close()
 		mydb.close()
 
-HomePage()
+homepage = HomePage()
